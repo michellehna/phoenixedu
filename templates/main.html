@@ -1,0 +1,35 @@
+<!-- This is the main page for LOGIN of the web application and the first page users sees when going to the website-->
+
+
+<html>
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Phoenix Edu</title>
+  </head>
+   
+  <div class="p-3 mb-2 bg-success text-white " style="height:100% ; align-items: center; margin:0 auto;" >
+    <div class="p-3 mb-2 bg-light text-dark position-absolute top-50 start-50 translate-middle" style= "width: 400px ; align-content: center" >
+      <h2>Welcome to Phoenix Edu!</h2>
+  <form  action="#" method="post">
+    <div class="mb-2">
+      <label for="validationCustom01" class="form-label">User Name</label>
+      <input type="text" class="form-control" name="nm">
+    </div>
+    <div class="mb-2">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" name="psw">
+    </div>
+    <p class="text-danger">{{message}}</p>
+    
+    <input type="submit" class="btn btn-primary" name="submit_button" value="Login">
+    <p class="fs-6">Don't have an account? <a href="{{ url_for('signup') }}">Register here</a></p>
+    <h5 style="text-align: center">Or</h5>
+    <div class="row">
+    <input type="submit" class="btn btn-primary" name="submit_button" value="Login with Facebook">
+  </div>
+  </form>
+</div>
+   </div>
+</html>

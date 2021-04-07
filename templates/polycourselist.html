@@ -1,0 +1,75 @@
+<!-- This is the page that returns the poly courses list for the selected polytechnic-->
+
+{% extends "base.html" %}
+
+{%  block title %} Courses in {{schoolname}} {% endblock %}
+
+{% block content%}
+<h3>Courses in {{schoolname}} </h3>
+<br>
+<div class="container">
+  <style>
+      aside {
+          width: 0%;
+          padding-left: 0px;
+          margin-left: 0px;
+          float: right;
+      }
+  
+      .button {
+          background-color: #ffffff;
+          border: none;
+          border-radius: 8px;
+          color: #000000;
+          padding: 0px 10px;
+          text-align: center;
+          font-size: 32px;
+          margin: 0px 0px;
+          opacity: 1;
+          transition: 0.5s;
+          display: inline-block;
+          text-decoration: none;
+          cursor: pointer;
+      }
+        
+      .button:hover {
+            background-color: #fe7f9c;
+            color: white;
+            opacity: 0.75
+      }
+  </style>
+  
+  <aside>
+      <form action="/schools/{{ schname }}" method="post">
+          <button class="button" type="submit" name="favorite" value="http://localhost:5000/+{{ schname }}#{{ schoolname }}">♡</button>
+      </form>
+  </aside>
+  </div>
+<div class="row">
+    {%for i in courselist: %}
+    <div class="shadow p-3 mb-5 bg-light rounded" style="width: 18rem;margin-left:25px;margin-top:25px; border-style: groove;">
+        <div class="card-body"style="text-align:center;">
+
+          {% if(i['url']): %}
+              <a href="{{i['url']}}">
+              <p class="card-text"> {{i['course_name']}} </p>
+              <form action="/schools/{{ schname }}" method="post">
+                <button class="button" type="submit" name="favorite" value="{{ i['url'] }}#{{ schoolname }} - {{ i['course_name'] }}">♡</button>
+              </form>
+              </a>
+              
+          {% else: %}
+              <a href="{{i['reference']}}">
+              <p class="card-text"> {{i['course_name']}} </p>
+              <form action="/schools/{{ schname }}" method="post">
+                <button class="button" type="submit" name="favorite" value="{{ i['reference'] }}#{{ schoolname }} - {{ i['course_name'] }}">♡</button>
+              </form>
+              </a>
+          {%endif%}
+        </div>
+      </div>
+    
+
+    {% endfor %}
+</div>
+{% endblock%}

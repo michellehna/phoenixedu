@@ -1,0 +1,51 @@
+<!-- This is the page that returns the popular courses list based on GES reports-->
+
+
+{% extends "base.html" %}
+{% block title %} Home Page {% endblock %}
+
+{% block content %}
+<div class="container-fluid" style= "height: 100px; ">
+        <style>
+                .button {
+                        background-color: #ffffff;
+                        border: none;
+                        border-radius: 8px;
+                        color: #000000;
+                        padding: 0px 10px;
+                        text-align: center;
+                        font-size: 32px;
+                        margin: 0px 70px;
+                        opacity: 1;
+                        transition: 0.5s;
+                        display: inline-block;
+                        text-decoration: none;
+                        cursor: pointer;
+                }
+                          
+                .button:hover {
+                        background-color: #fe7f9c;
+                        color: white;
+                        opacity: 0.75
+                }
+        </style>    
+    <div class="row">
+            {% for col in allpopcourses %}
+
+            <div class="card text-dark bg-light mb-3" style="width: 15rem; margin-left: 15px; margin-top: 10px;">
+                <img src='static/imgs/{{ col['Image'] }}'  class="card-img-top" alt="">
+                <div class="card-body">
+                        <h6 class="card-title"><a href="{{ col['Link'] }}">{{ col['University'] }}</a></h6>
+                        <p class="card-text">{{ col['Programme'] }}</p>
+                        <form action="/popularcourses" method="post">
+                                <button class="button" type="submit" name="favorite" value="{{ col['Link'] }}#{{ col['University'] }} - {{ col['Programme'] }}">♡</button>
+                        </form>
+                        
+                </div>
+        </div>
+
+
+            {% endfor %}
+    </div>
+</div>
+{% endblock %}

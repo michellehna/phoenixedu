@@ -1,0 +1,49 @@
+<!-- This page provides a list of category schools based on the user's selected category-->
+
+{% extends "base.html" %} {% block title %}  Category Schools {% endblock %} {% block
+        content %}
+
+<div class="container-fluid" style="height: 100px; ">
+        <style>
+                .button {
+                        background-color: #ffffff;
+                        border: none;
+                        border-radius: 8px;
+                        color: #000000;
+                        padding: 0px 10px;
+                        text-align: center;
+                        font-size: 32px;
+                        margin: 0px 70px;
+                        opacity: 1;
+                        transition: 0.5s;
+                        display: inline-block;
+                        text-decoration: none;
+                        cursor: pointer;
+                }
+                          
+                .button:hover {
+                        background-color: #fe7f9c;
+                        color: white;
+                        opacity: 0.75
+                }
+        </style>
+
+    <div class="row">
+            <br>
+            <h3 style = "text-align: center;">Category Schools</h3>
+            <br>
+            {% for col in categorydata %}
+            <div class="card text-dark bg-light mb-3" style="width: 15rem; padding:10px; margin-top: 10px; margin-left: 15px;">
+                    <div class="card-body" style="padding: 5px">
+                            <img src='static/imgs/{{ col[4] }}' class="card-img-top" alt="">
+                            <h6 class="card-title"><a href="{{ col[3] }}">{{ col[2] }}</a></h6>
+                            <p class="card-text">{{ col[1] }}</p>
+                            <form action="/{{ csname }}" method="post">
+                                <button class="button" type="submit" name="favorite" value="{{ col[3] }}#{{ col[1] }} - {{ col[2] }}">♡</button>
+                            </form>
+                    </div>
+            </div>
+            {% endfor %}
+    </div>
+</div>
+{% endblock%}

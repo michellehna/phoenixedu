@@ -1,0 +1,48 @@
+<!-- This page shows the list of institutions in Singapore-->
+
+
+{% extends "base.html" %} {% block title %} Schools in Singapore{% endblock %}
+{% block content%}
+<br>
+<h3 style="text-align: center;">Polytechnics in Singapore</h3>
+<br />
+<div class="row">
+  {%for i in sdata.keys(): %}
+  <div
+    class="shadow p-3 mb-5 bg-white rounded"
+    style="margin-left: 25px; width: 24rem; margin-right: 25px "
+  >
+  
+        <a href="{{ url_for('schools') }}/{{i}}">
+      <img
+        src="{{sdata[i][2]}}"
+        class="card-img-top embed-responsive-item"
+        alt="..."
+      />
+    </a>
+  </div>
+  {% endfor %}
+  <br />
+</div>
+
+<h3 style="text-align: center;">Universities in Singapore</h3>
+<br />
+<div class="row">
+  {%for i in unidata(): %}
+  <div
+    class="shadow p-3 mb-5 bg-white rounded"
+    style="margin-left: 25px; width: 24rem; margin-right: 25px "
+  >
+  
+        <a href="{{ url_for('schools') }}/{{i['university']}}">
+      <img
+        src="static/images/{{i['logo']}}"
+        class="card-img-top embed-responsive-item"
+        alt="..."
+      />
+    </a>
+  </div>
+  {% endfor %}
+  <br />
+</div>
+{% endblock%}

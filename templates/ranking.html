@@ -1,0 +1,51 @@
+<!-- This page shows all the Singapore insitutions ranking-->
+
+
+{% extends "base.html" %} {% block content %}
+<br>
+<h1 style = "text-align: center;">All Singapore University Rankings</h1>
+<br>
+
+<style>
+
+  #ranking {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin-left: 120px;
+    margin-bottom: 100px;
+  }
+  
+  #ranking td, #ranking th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #ranking tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #ranking tr:hover {background-color: #ddd;}
+  
+  #ranking th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #64c0ac;
+    color: white;
+  }
+  </style>
+
+<table id="ranking">
+  <tr>
+    <th>Local Ranking</th>
+    <th>World Ranking</th>
+    <th>Name</th>
+  </tr>
+  {% for each in listofschools %}
+  <tr>
+    <td>{{ each.LocalRanking }}</td>
+    <td>{{ each.WorldRanking }}</td>
+    <td><a href="{{ each.Website }}" >{{ each.Name }}</a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock content %}

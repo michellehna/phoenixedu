@@ -1,0 +1,31 @@
+<!-- This page displays the list of jobs under a career based on user's selected career-->
+
+
+{% extends "base.html" %}
+
+{%  block title %} 
+{% for p in selectedcareer %}
+{{p['field']}} career field
+{% endfor %}
+{% endblock %}
+
+{% block content%}
+
+<div>
+    {% for p in selectedcareer %}
+    <br>
+    <h3 style ="text-align: center;">Jobs under {{p['field']}} career field </h3>
+    <br>
+    {% endfor %}
+</div>
+
+<div class="row" style="width: 80rem; height:20rem; margin-left:10px; margin-top: 10px;">
+    {%for i in career %} 
+      {% if i[shortform] != None%}
+      <button type="button" style="width: 10rem; height:6rem; margin-left:15px;" class="btn btn-outline-secondary">
+    {{ i[shortform] }}
+    {% endif %} 
+    {%endfor%}
+  </button>
+</div>
+{% endblock%}

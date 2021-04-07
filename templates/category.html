@@ -1,0 +1,12 @@
+<!-- This page provides a list of categories for the user to choose from-->
+
+{% extends "base.html" %} {% block title %} Category Page {% endblock %} {% block
+    content %}
+    
+<div class="container">
+    <h1>Choose a Category</h1> 
+    {% for course in courses %}
+    <p><a class="btn btn-primary btn-lg" style="color: purple" href="{{course.key}}">{{course.name}}</a></p>
+    {% endfor %}
+</div>
+{% endblock %}

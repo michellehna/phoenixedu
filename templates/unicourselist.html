@@ -1,0 +1,66 @@
+<!-- This is the page that returns the Uni courses list for the selected University-->
+
+
+{% extends "base.html" %}
+
+{%  block title %} Courses in {{schoolname}} {% endblock %}
+
+{% block content%}
+<h3>Courses in {{schoolname}} </h3>
+<div class="container">
+  <style>
+      aside {
+          width: 0%;
+          padding-left: 0px;
+          margin-left: 0px;
+          float: right;
+      }
+  
+      .button {
+          background-color: #ffffff;
+          border: none;
+          border-radius: 8px;
+          color: #000000;
+          padding: 0px 10px;
+          text-align: center;
+          font-size: 32px;
+          margin: 0px 0px;
+          opacity: 1;
+          transition: 0.5s;
+          display: inline-block;
+          text-decoration: none;
+          cursor: pointer;
+      }
+        
+      .button:hover {
+            background-color: #fe7f9c;
+            color: white;
+            opacity: 0.75
+      }
+  </style>
+  
+  <aside>
+      <form action="/schools/{{ schoolname }}" method="post">
+          <button class="button" type="submit" name="favorite" value="http://localhost:5000/+{{ schoolname }}#{{ schoolname }}">♡</button>
+      </form>
+  </aside>
+  </div>
+<br>
+<div class="row">
+
+    {%for i in  courselist: %}
+    <div class="shadow p-3 mb-5 bg-light rounded" style="width: 18rem;margin-left:25px;margin-top:25px; border-style: groove;">
+        <div class="card-body"style="text-align:center;">
+              <a href="{{i['CourseLink']}}">
+              <p class="card-text"> {{i['Course']}} </p>
+              <form action="/schools/{{ schoolname }}" method="post">
+                <button class="button" type="submit" name="favorite" value="{{ i['CourseLink'] }}#{{ schoolname }} - {{ i['Course'] }}">♡</button>
+              </form>
+              </a>
+        </div>
+      </div>
+    
+
+    {% endfor %}
+</div>
+{% endblock%}
